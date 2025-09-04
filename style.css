@@ -558,3 +558,46 @@ section,
 main {
     overflow: visible !important;
 }
+
+/* ===== Header : logo au-dessus + boutons en grille (mobile) ===== */
+@media (max-width: 768px) {
+    .nav {
+        display: grid;
+        /* on bascule en grille */
+        grid-template-areas:
+            "brand"
+            "menu";
+        /* menu sous le logo */
+        grid-template-columns: 1fr;
+        row-gap: 12px;
+        justify-items: center;
+        /* centre le contenu */
+    }
+
+    .brand {
+        grid-area: brand;
+        justify-self: center
+    }
+
+    header nav {
+        grid-area: menu;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        /* 2 colonnes de boutons */
+        gap: 10px 12px;
+        justify-items: center;
+    }
+
+    /* bouton plein, propre et aligné */
+    .btn {
+        width: 100%;
+        justify-content: center;
+        padding: 10px 12px;
+    }
+
+    /* si tu veux que “Prendre RDV” prenne toute la ligne */
+    .btn.primary {
+        grid-column: 1 / -1;
+    }
+}
